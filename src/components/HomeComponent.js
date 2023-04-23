@@ -1,9 +1,16 @@
 import React from 'react'
+import FeedComponent from './FeedComponent.js'
 
-const HomeComponent = () => {
+const HomeComponent = ({posts}) => {
   return (
-    <main>
-      <h1>Home</h1>
+    <main className='Home'>
+      { posts.length ?
+        <FeedComponent
+          posts={posts}
+        />
+      :
+        <p style={{ color:'red', margin:'25px' }}>There are no Posts</p>
+      }
     </main>
   )
 }

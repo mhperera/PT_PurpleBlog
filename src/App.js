@@ -19,19 +19,19 @@ function App() {
     {
       id : 1,
       title : '1st Post on facebook',
-      datetime : '',
+      datetime : '2023 04 20 01:01:00',
       body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?'
     },
     {
       id : 2,
       title : '2nd Post on facebook',
-      datetime : '',
+      datetime : '2023 04 20 01:01:00',
       body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?'
     },
     {
       id : 3,
       title : '3rd Post on facebook',
-      datetime : '',
+      datetime : '2023 04 20 01:01:00',
       body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?'
     }
   ]);
@@ -52,7 +52,7 @@ function App() {
 
           <Routes>
 
-            <Route exact path='/'  element={<HomeComponent/>}/>
+            <Route exact path='/'  element={<HomeComponent posts={posts} />}/>
 
             <Route exact path='/post'  element={<NewPostComponent/>}/>
 
