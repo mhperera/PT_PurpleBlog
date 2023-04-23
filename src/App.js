@@ -15,7 +15,9 @@ function App() {
   return (
     <div className="App">
 
-        <HeaderComponent />
+        <HeaderComponent
+          title= 'React JS Blog'
+        />
         <NavComponent />
 
         <Router>
