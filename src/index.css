@@ -79,7 +79,7 @@ body {
 .searchForm input[type='text'] {
 	font-family: 'Open Sans', sans-serif;
 	width: 100%;
-	min-height: 48px;
+	min-height: 25px;
 	font-size: 1rem;
 	padding: 0.25rem;
 	border-radius: 0.25rem;

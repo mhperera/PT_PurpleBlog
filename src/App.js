@@ -12,29 +12,61 @@ import { BrowserRouter as Router , Routes, Route, useHistory } from 'react-route
 import { useState, useEffect } from 'react';
 
 function App() {
+
+  const [search, setSearch] = useState('');
+  const [searchResult, setSearchResult] = useState([]);
+  const [posts, setPosts] = useState([
+    {
+      id : 1,
+      title : '1st Post on facebook',
+      datetime : '',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?'
+    },
+    {
+      id : 2,
+      title : '2nd Post on facebook',
+      datetime : '',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?'
+    },
+    {
+      id : 3,
+      title : '3rd Post on facebook',
+      datetime : '',
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?'
+    }
+  ]);
+
   return (
     <div className="App">
 
-        <HeaderComponent
-          title= 'React JS Blog'
-        />
-        <NavComponent />
-
         <Router>
+
+          <HeaderComponent
+            title= 'React JS Blog'
+          />
+
+          <NavComponent
+            search = {search}
+            setSearch={setSearch}
+          />
 
           <Routes>
 
             <Route exact path='/'  element={<HomeComponent/>}/>
+
             <Route exact path='/post'  element={<NewPostComponent/>}/>
+
             <Route exact path='/post/:id'  element={<PostPageComponent/>}/>
+
             <Route exact path='/about'  element={<AboutComponent/>}/>
+
             <Route path='*'  element={<Error/>}/>
 
           </Routes>
 
-        </Router>
+          <FooterComponent />
 
-        <FooterComponent />
+        </Router>
 
     </div>
   );
