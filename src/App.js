@@ -47,10 +47,16 @@ function App() {
 
   const navigate = useNavigate();
 
-  const handleDelete = (id) => {
-    const newPosts = posts.filter( (item)=>(item.id!==id));
-    setPosts(newPosts);
-    navigate('/');
+  const handleDelete = async (id) => {
+    try {
+      await api.delete(`/posts/${id}`);
+      const newPosts = posts.filter( (item)=>(item.id!==id));
+      setPosts(newPosts);
+      navigate('/');
+    } catch (error) {
+      console.log(`Error : ${error.message}`);
+    }
+
   }
 
   useEffect(()=>{
