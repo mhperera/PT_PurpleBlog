@@ -17,7 +17,8 @@ function App() {
 
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState('');
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const id = posts.length ? posts[posts.length - 1].id +1 : 1;
     const datetime = format(new Date(), 'MMMM dd, yyyy pp');
@@ -27,11 +28,17 @@ function App() {
       body : postBody,
       datetime
     }
-    const allPosts = [ ...posts, newPost];
-    setPosts(allPosts);
-    setPostBody('');
-    setPostTitle('');
-    navigate('/');
+    try {
+      const response = await api.post('/posts', newPost);
+      const allPosts = [ ...posts, response.data];
+      setPosts(allPosts);
+      setPostBody('');
+      setPostTitle('');
+      navigate('/');
+    } catch (error) {
+      console.log(`Error : ${error.message}`);
+    }
+
   }
 
   const [search, setSearch] = useState('');
