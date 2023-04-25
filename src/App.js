@@ -8,10 +8,30 @@ import NewPostComponent from './components/NewPostComponent';
 import PostPageComponent from './components/PostPageComponent';
 import Error from './components/Error.js';
 
-import { BrowserRouter as Router , Routes, Route, useHistory } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { format } from 'date-fns';
 
 function App() {
+
+  const [postTitle, setPostTitle] = useState('');
+  const [postBody, setPostBody] = useState('');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const id = posts.length ? posts[posts.length - 1].id +1 : 1;
+    const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+    const newPost = {
+      id,
+      title : postTitle,
+      body : postBody,
+      datetime
+    }
+    const allPosts = [ ...posts, newPost];
+    setPosts(allPosts);
+    setPostBody('');
+    setPostTitle('');
+    navigate('/');
+  }
 
   const [search, setSearch] = useState('');
   const [searchResult, setSearchResult] = useState([]);
@@ -36,41 +56,67 @@ function App() {
     }
   ]);
 
-  const handleDelete = () => {
+  const navigate = useNavigate();
 
+  const handleDelete = (id) => {
+    const newPosts = posts.filter( (item)=>(item.id!==id));
+    setPosts(newPosts);
+    navigate('/');
   }
 
   return (
     <div className="App">
 
-        <Router>
+      <HeaderComponent
+        title= 'React JS Blog'
+      />
 
-          <HeaderComponent
-            title= 'React JS Blog'
-          />
+      <NavComponent
+        search = {search}
+        setSearch={setSearch}
+      />
 
-          <NavComponent
-            search = {search}
-            setSearch={setSearch}
-          />
+      <Routes>
 
-          <Routes>
+        <Route
+          exact path='/'
+          element={<HomeComponent
+                      posts={posts}
+                    />}
+        />
 
-            <Route exact path='/'  element={<HomeComponent posts={posts} />}/>
+        <Route
+          exact path='/post'
+          element={<NewPostComponent
+                      handleSubmit={handleSubmit}
+                      postTitle={postTitle}
+                      setPostTitle={setPostTitle}
+                      postBody={postBody}
+                      setPostBody={setPostBody}
+                  />}
+        />
 
-            <Route exact path='/post'  element={<NewPostComponent/>}/>
+        <Route
+          exact path='/post/:id'
+          element={<PostPageComponent
+                      posts={posts}
+                      handleDelete={handleDelete}
+                  />}
+        />
 
-            <Route exact path='/post/:id'  element={<PostPageComponent posts={posts} handleDelete={handleDelete} />}/>
+        <Route
+          exact path='/about'
+          element={<AboutComponent/>}
+        />
 
-            <Route exact path='/about'  element={<AboutComponent/>}/>
+        <Route
+          path='*'
+          element={<Error/>}
+        />
 
-            <Route path='*'  element={<Error/>}/>
+      </Routes>
 
-          </Routes>
-
-          <FooterComponent />
-
-        </Router>
+      <FooterComponent />
 
     </div>
   );
