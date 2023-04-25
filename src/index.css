@@ -72,7 +72,8 @@ body {
 }
 
 .searchForm {
-  width: 80%;
+  display: block;
+  width: 100%;
   padding: 0.5rem 0.25rem;
 }
 
@@ -257,12 +258,16 @@ body {
   }
 
   .searchForm {
-    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
     padding: .5rem 0;
   }
 
   .searchForm input[type="text"] {
     margin-left: 0.5rem;
+    width: 30%;
   }
 
   .newPostForm textarea {
