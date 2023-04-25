@@ -6,12 +6,14 @@ import HomeComponent from './components/HomeComponent';
 import AboutComponent from './components/AboutComponent';
 import NewPostComponent from './components/NewPostComponent';
 import PostPageComponent from './components/PostPageComponent';
+import EditPostComponent from './components/EditPostComponent';
 import Error from './components/Error.js';
 
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import api from './api/posts'
+
 
 function App() {
 
@@ -39,6 +41,23 @@ function App() {
       console.log(`Error : ${error.message}`);
     }
 
+  }
+
+  const [editTitle, setEditTitle] = useState('');
+  const [editBody, setEditBody] = useState('');
+
+  const handleEdit = async (id) => {
+    try {
+      const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+      const editedPost = {id, title: editTitle, body: editBody, datetime};
+      const response = await api.patch(`/posts/${id}`, editedPost);
+      setPosts( posts.map((post)=>(post.id===id? response.data : post)) );
+      setEditBody('');
+      setEditTitle('');
+      navigate('/');
+    } catch (error) {
+      console.log(`Error : ${error.message}`);
+    }
   }
 
   const [search, setSearch] = useState('');
@@ -124,6 +143,18 @@ function App() {
                       setPostTitle={setPostTitle}
                       postBody={postBody}
                       setPostBody={setPostBody}
+                  />}
+        />
+
+        <Route
+          path='/edit/:id'
+          element={<EditPostComponent
+                      posts={posts}
+                      handleEdit={handleEdit}
+                      editBody={editBody}
+                      setEditBody={setEditBody}
+                      editTitle={editTitle}
+                      setEditTitle={setEditTitle}
                   />}
         />
 
