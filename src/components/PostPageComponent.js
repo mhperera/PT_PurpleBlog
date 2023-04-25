@@ -9,7 +9,7 @@ const PostPageComponent = ({ posts, handleDelete }) => {
   return (
     <main className='PostPage'>
 
-      <article class="post">
+      <article className="post">
         { post &&
 
             <>

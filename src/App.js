@@ -38,13 +38,13 @@ function App() {
   const [posts, setPosts] = useState([
     {
       id : 1,
-      title : '1st Post on facebook',
+      title : '1st Post on facebook 5',
       datetime : '2023 04 20 01:01:00',
       body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?'
     },
     {
       id : 2,
-      title : '2nd Post on facebook',
+      title : '2nd Post on facebook 55',
       datetime : '2023 04 20 01:01:00',
       body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?'
     },
@@ -64,6 +64,15 @@ function App() {
     navigate('/');
   }
 
+  useEffect(()=>{
+    const filteredResults = posts.filter((post)=>(
+      (( post.body).toLowerCase() ).includes( search.toLowerCase() )
+      ||
+      (( post.title).toLowerCase() ).includes( search.toLowerCase() )
+    ));
+    setSearchResult(filteredResults.reverse());
+  },[posts, search]);
+
   return (
     <div className="App">
 
@@ -81,7 +90,7 @@ function App() {
         <Route
           exact path='/'
           element={<HomeComponent
-                      posts={posts}
+                      posts={searchResult}
                     />}
         />
 
