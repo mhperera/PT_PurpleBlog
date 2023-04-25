@@ -20,21 +20,25 @@ function App() {
       id : 1,
       title : '1st Post on facebook',
       datetime : '2023 04 20 01:01:00',
-      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?'
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?'
     },
     {
       id : 2,
       title : '2nd Post on facebook',
       datetime : '2023 04 20 01:01:00',
-      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?'
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?'
     },
     {
       id : 3,
       title : '3rd Post on facebook',
       datetime : '2023 04 20 01:01:00',
-      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?'
+      body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolorem?'
     }
   ]);
+
+  const handleDelete = () => {
+
+  }
 
   return (
     <div className="App">
@@ -56,7 +60,7 @@ function App() {
 
             <Route exact path='/post'  element={<NewPostComponent/>}/>
 
-            <Route exact path='/post/:id'  element={<PostPageComponent/>}/>
+            <Route exact path='/post/:id'  element={<PostPageComponent posts={posts} handleDelete={handleDelete} />}/>
 
             <Route exact path='/about'  element={<AboutComponent/>}/>
 
