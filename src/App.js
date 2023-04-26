@@ -14,6 +14,8 @@ import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import api from './api/posts'
 
+import useWindowSize from './hooks/useWindowSize'
+
 
 function App() {
 
@@ -114,11 +116,14 @@ function App() {
     setSearchResult(filteredResults.reverse());
   },[posts, search]);
 
+  const {width} = useWindowSize();
+
   return (
     <div className="App">
 
       <HeaderComponent
         title= 'React JS Blog'
+        width={width}
       />
 
       <NavComponent
