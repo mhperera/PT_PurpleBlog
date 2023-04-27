@@ -12,12 +12,11 @@ import { DataProvider } from './context/DataContext';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
-
 	return (
 		<div className="App">
-			<DataProvider>
-				<HeaderComponent title="React JS Blog" />
+			<HeaderComponent title="React JS Blog" />
 
+			<DataProvider>
 				<NavComponent />
 
 				<Routes>
@@ -28,9 +27,9 @@ function App() {
 					<Route path="/about" element={<AboutComponent />} />
 					<Route path="*" element={<Error />} />
 				</Routes>
-
-				<FooterComponent />
 			</DataProvider>
+
+			<FooterComponent />
 		</div>
 	);
 }
