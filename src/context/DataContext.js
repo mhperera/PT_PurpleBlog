@@ -1,6 +1,4 @@
 import { createContext, useState, useEffect } from 'react';
-
-// Taken from App.js
 import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import api from './../api/posts';
@@ -10,6 +8,7 @@ import useAxiosFetch from './../hooks/useAxiosFetch';
 const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
+
 	const [postTitle, setPostTitle] = useState('');
 	const [postBody, setPostBody] = useState('');
 	const [editTitle, setEditTitle] = useState('');
@@ -110,7 +109,6 @@ export const DataProvider = ({ children }) => {
 				setEditBody,
 				editTitle,
 				setEditTitle,
-				posts,
 				handleDelete,
 			}}
 		>
