@@ -10,7 +10,6 @@ import useAxiosFetch from './../hooks/useAxiosFetch';
 const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
-    
 	const [postTitle, setPostTitle] = useState('');
 	const [postBody, setPostBody] = useState('');
 	const [editTitle, setEditTitle] = useState('');
@@ -95,6 +94,24 @@ export const DataProvider = ({ children }) => {
 		<DataContext.Provider
 			value={{
 				width,
+				search,
+				setSearch,
+				searchResult,
+				fetchError,
+				isLoading,
+				handleSubmit,
+				postTitle,
+				setPostTitle,
+				postBody,
+				setPostBody,
+				posts,
+				handleEdit,
+				editBody,
+				setEditBody,
+				editTitle,
+				setEditTitle,
+				posts,
+				handleDelete,
 			}}
 		>
 			{children}

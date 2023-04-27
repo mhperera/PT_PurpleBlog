@@ -26,7 +26,7 @@ function App() {
   const [searchResult, setSearchResult] = useState([]);
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
-  const {width} = useWindowSize();
+  // const {width} = useWindowSize();
   const { data, fetchError, isLoading } = useAxiosFetch('http://localhost:3500/posts');
 
   useEffect(()=>{
@@ -100,51 +100,28 @@ function App() {
           title= 'React JS Blog'
         />
 
-        <NavComponent
-          search = {search}
-          setSearch={setSearch}
-        />
+        <NavComponent/>
 
         <Routes>
 
           <Route
             exact path='/'
-            element={<HomeComponent
-                        posts={searchResult}
-                        fetchError={fetchError}
-                        isLoading={isLoading}
-                      />}
+            element={<HomeComponent/>}
           />
 
           <Route
             exact path='/post'
-            element={<NewPostComponent
-                        handleSubmit={handleSubmit}
-                        postTitle={postTitle}
-                        setPostTitle={setPostTitle}
-                        postBody={postBody}
-                        setPostBody={setPostBody}
-                    />}
+            element={<NewPostComponent />}
           />
 
           <Route
             path='/edit/:id'
-            element={<EditPostComponent
-                        posts={posts}
-                        handleEdit={handleEdit}
-                        editBody={editBody}
-                        setEditBody={setEditBody}
-                        editTitle={editTitle}
-                        setEditTitle={setEditTitle}
-                    />}
+            element={<EditPostComponent />}
           />
 
           <Route
             exact path='/post/:id'
-            element={<PostPageComponent
-                        posts={posts}
-                        handleDelete={handleDelete}
-                    />}
+            element={<PostPageComponent />}
           />
 
           <Route

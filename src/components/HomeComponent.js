@@ -1,7 +1,12 @@
 import React from 'react'
 import FeedComponent from './FeedComponent.js'
+import { useContext } from 'react';
+import DataContext from '../context/DataContext.js';
 
-const HomeComponent = ({posts, fetchError, isLoading}) => {
+const HomeComponent = () => {
+
+  const {searchResult:posts, fetchError, isLoading} = useContext(DataContext);
+
   return (
     <main className='Home'>
 
