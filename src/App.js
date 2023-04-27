@@ -12,9 +12,10 @@ import Error from './components/Error.js';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
-import api from './api/posts'
+import api from './api/posts';
 
 import useWindowSize from './hooks/useWindowSize'
+import useAxiosFetch from './hooks/useAxiosFetch';
 
 
 function App() {
@@ -81,33 +82,6 @@ function App() {
   }
 
   useEffect(()=>{
-
-    const fetchPosts = async () => {
-      try {
-        const response = await api.get('/posts');
-        if(response && response.data) {
-          setPosts(response.data);
-        }
-      } catch (error) {
-        // THIS IS NOT IN THE 200 ERROR CODE RANGE
-        if(error.response){
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        }else{
-          console.log(`Error : ${error.message}`);
-        }
-
-      } finally {
-
-      }
-    }
-
-    fetchPosts();
-
-  },[]);
-
-  useEffect(()=>{
     const filteredResults = posts.filter((post)=>(
       (( post.body).toLowerCase() ).includes( search.toLowerCase() )
       ||
@@ -117,6 +91,11 @@ function App() {
   },[posts, search]);
 
   const {width} = useWindowSize();
+  const { data, fetchError, isLoading } = useAxiosFetch('http://localhost:3500/posts');
+
+  useEffect(()=>{
+    setPosts(data);
+  },[data]);
 
   return (
     <div className="App">
@@ -137,6 +116,8 @@ function App() {
           exact path='/'
           element={<HomeComponent
                       posts={searchResult}
+                      fetchError={fetchError}
+                      isLoading={isLoading}
                     />}
         />
 
