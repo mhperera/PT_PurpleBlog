@@ -12,7 +12,7 @@ export const DataProvider = ({ children }) => {
 	const [posts, setPosts] = useState([]);
 	const navigate = useNavigate();
 	const { data, fetchError, isLoading } = useAxiosFetch(
-		'http://localhost:3500/posts'
+		`${process.env.REACT_APP_API_URL}/posts`
 	);
 
 	useEffect(() => {
