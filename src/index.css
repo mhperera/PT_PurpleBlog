@@ -35,8 +35,12 @@ body {
 	justify-content: flex-start;
 	align-items: center;
 	/* background-color: #fff; */
-	background: rgb(255,255,255);
-	background: linear-gradient(225deg, rgba(255,255,255,1) 0%, rgba(205,181,230,1) 100%); 
+	background: rgb(255, 255, 255);
+	background: linear-gradient(
+		225deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(205, 181, 230, 1) 100%
+	);
 }
 
 .Header,
@@ -65,11 +69,19 @@ body {
 	place-content: center;
 }
 
+.Footer p {
+	margin: 0;
+}
+
 .Nav {
 	width: 100%;
 	/* background-color: #333; */
-	background: rgb(120,47,172);
-	background: linear-gradient(356deg, rgba(120,47,172,1) 0%, rgba(151,151,151,1) 100%);
+	background: rgb(120, 47, 172);
+	background: linear-gradient(
+		356deg,
+		rgba(120, 47, 172, 1) 0%,
+		rgba(151, 151, 151, 1) 100%
+	);
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -246,6 +258,10 @@ body {
 	margin-top: 2rem;
 }
 
+.btn {
+	margin-right: 3px;
+}
+
 @media only screen and (min-width: 610px) {
 	html {
 		font-size: 15px;
@@ -264,6 +280,7 @@ body {
 
 	.Nav ul {
 		text-align: right;
+		margin-bottom: 0px;
 	}
 
 	.Nav li:hover,
@@ -290,5 +307,4 @@ body {
 	.newPostForm textarea {
 		height: 100px;
 	}
-
 }

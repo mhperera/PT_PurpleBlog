@@ -77,6 +77,7 @@ const EditPostComponent = () => {
 						/>
 
 						<button
+							className='btn'
 							type="Sumit"
 							onClick={() => {
 								handleEdit(post.id);

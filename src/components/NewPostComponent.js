@@ -62,7 +62,7 @@ const NewPostComponent = () => {
 					}}
 				/>
 
-				<button type="Sumit">Save Post</button>
+				<button className='btn' type="Sumit">Save Post</button>
 			</form>
 		</main>
 	);
