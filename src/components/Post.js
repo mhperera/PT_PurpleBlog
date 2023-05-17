@@ -9,9 +9,9 @@ const Post = ({ post }) => {
 				<p className="postDate">{post.datetime}</p>
 			</Link>
 			<p className="postBody">
-				{post.body.length <= 400
+				{post.body.length <= 800
 					? post.body
-					: `${post.body.slice(0, 400)}...`}
+					: `${post.body.slice(0, 800)}...`}
 			</p>
 		</article>
 	);

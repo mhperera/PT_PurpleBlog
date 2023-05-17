@@ -1,16 +1,23 @@
 import React, { useContext } from 'react';
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import DataContext from '../context/DataContext';
+import { format } from 'date-fns';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useStoreState, useStoreActions } from 'easy-peasy';
+import api from './../api/posts';
 
 const EditPostComponent = () => {
-	const { posts, format, api, navigate, setPosts } = useContext(DataContext);
+	// const { posts, format, api, navigate, setPosts } = useContext(DataContext);
+	const editTitle = useStoreState((state)=>state.editTitle);
+	const editBody = useStoreState((state)=>state.editBody);
+	const setEditTitle = useStoreActions((action)=>action.setEditTitle);
+	const setEditBody = useStoreActions((action)=>action.setEditBody);
+	const getPostById = useStoreState((state)=>state.getPostById);
+	const editPost = useStoreActions((action)=>action.editPost);
 
-	const [editTitle, setEditTitle] = useState('');
-	const [editBody, setEditBody] = useState('');
+	const navigate = useNavigate();
 
 	const { id } = useParams();
-	const post = posts.find((post) => post.id.toString() === id);
+	const post = getPostById(id);
 
 	useEffect(() => {
 		if (post) {
@@ -21,8 +28,8 @@ const EditPostComponent = () => {
 		}
 	}, [post, setEditTitle, setEditBody]);
 
-	const handleEdit = async (id) => {
-		try {
+	const handleEdit = (id) => {
+
 			const datetime = format(new Date(), 'MMMM dd, yyyy pp');
 			const editedPost = {
 				id,
@@ -30,16 +37,8 @@ const EditPostComponent = () => {
 				body: editBody,
 				datetime,
 			};
-			const response = await api.patch(`/posts/${id}`, editedPost);
-			setPosts(
-				posts.map((post) => (post.id === id ? response.data : post))
-			);
-			setEditBody('');
-			setEditTitle('');
+			editPost(editedPost);
 			navigate('/');
-		} catch (error) {
-			console.log(`Error : ${error.message}`);
-		}
 	};
 
 	return (
@@ -78,7 +77,7 @@ const EditPostComponent = () => {
 
 						<button
 							className='btn'
-							type="Sumit"
+							type="button"
 							onClick={() => {
 								handleEdit(post.id);
 							}}

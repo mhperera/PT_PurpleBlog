@@ -1,11 +1,11 @@
 import React from 'react'
 import FeedComponent from './FeedComponent.js'
-import { useContext } from 'react';
-import DataContext from '../context/DataContext.js';
+import { useStoreState } from 'easy-peasy';
 
-const HomeComponent = () => {
+const HomeComponent = ( { isLoading, fetchError } ) => {
 
-  const {searchResult:posts, fetchError, isLoading} = useContext(DataContext);
+  const posts = useStoreState((state)=>state.posts);
+  const searchResult = useStoreState((state)=>state.searchResult);
 
   return (
     <main className='Home'>
@@ -19,7 +19,7 @@ const HomeComponent = () => {
         <>
             { posts.length ?
                 <FeedComponent
-                  posts={posts}
+                  posts={searchResult}
                 />
               :
                 <p style={{ color:'red', margin:'25px' }}>There are no Posts</p>
