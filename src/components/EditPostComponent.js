@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
-import { useState, useEffect } from 'react';
+import React from 'react';
+import {  useEffect } from 'react';
 import { format } from 'date-fns';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useStoreState, useStoreActions } from 'easy-peasy';
-import api from './../api/posts';
 
 const EditPostComponent = () => {
 	// const { posts, format, api, navigate, setPosts } = useContext(DataContext);
