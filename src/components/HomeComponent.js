@@ -5,7 +5,7 @@ import { useStoreState } from 'easy-peasy';
 const HomeComponent = ( { isLoading, fetchError } ) => {
 
   const posts = useStoreState((state)=>state.posts);
-  // const searchResult = useStoreState((state)=>state.searchResult);
+  const searchResult = useStoreState((state)=>state.searchResult);
 
   return (
     <main className='Home'>
@@ -19,7 +19,7 @@ const HomeComponent = ( { isLoading, fetchError } ) => {
         <>
             { posts.length ?
                 <FeedComponent
-                  posts={posts}
+                  posts={searchResult}
                 />
               :
                 <p style={{ color:'red', margin:'25px' }}>There are no Posts</p>
