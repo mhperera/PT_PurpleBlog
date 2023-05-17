@@ -19,7 +19,7 @@ const HomeComponent = ( { isLoading, fetchError } ) => {
         <>
             { posts.length ?
                 <FeedComponent
-                  posts={searchResult}
+                  posts={posts}
                 />
               :
                 <p style={{ color:'red', margin:'25px' }}>There are no Posts</p>
